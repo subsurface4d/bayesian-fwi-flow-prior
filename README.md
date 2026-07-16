@@ -42,14 +42,12 @@ Put the velocity/saturation arrays and the noise trace in `model/`, and the VAE 
 
 ## Usage
 
-**Notebooks** (`notebooks/`) form the pipeline: `01` prior models → `02`/`03` VAE train/validate → `04` FWI test → `06`–`09` HMC results (main, survey, waveforms, sensitivity) → `10`/`11` workflow & data. `notebooks/revision/` holds the peer-review experiments (baseline error, sparse acquisition, survey design, FWI-VAE and regularized-FWI baselines). Launch with `jupyter lab` from the root.
+**Notebooks** (`notebooks/`) form the pipeline: `01` prior models → `02`/`03` VAE train/validate → `04` FWI test → `05` Run Results using scripts → `06`–`09` HMC results analysis (main, survey, waveforms, sensitivity) → `10`/`11` workflow & data. `notebooks/revision/` holds the peer-review experiments (baseline error, sparse acquisition, survey design, FWI-VAE and regularized-FWI baselines).
 
-**Batch runs** (`scripts/`) launch the `src/` drivers across GPUs — for example:
+**Batch runs** (`scripts/`) launch the `src/` drivers across GPUs for step `05` — for example:
 
 ```bash
-bash scripts/05_run_fwi_survey.sh     # HMC survey / well sweep
-python src/HMC_FWI_VAE.py --output_dir results/run1 --f0 30 --src_id 2 --rec_id 1 \
-    --vp_ml_file model/vp_ml_nz346_nx401_5m.npy --device cuda:0 --temp 0.025
+bash scripts/05_run_fwi_survey.sh
 ```
 
 > The `out_dir` in `scripts/*.sh` and `checkpoint_path` in `src/HMC_FWI_VAE.py` use absolute paths from the authors' cluster — edit them to your own (e.g. `results/`, `VAE/...pth`).
