@@ -45,10 +45,8 @@ dependencies = [
     "scikit-learn",
     "scikit-image",
     "tqdm",
+    "jupyter",
 ]
-
-[project.optional-dependencies]
-notebooks = ["jupyter"]
 
 [project.urls]
 Paper = "https://doi.org/10.1029/2025JH001190"
