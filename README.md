@@ -42,13 +42,28 @@ Put the velocity/saturation arrays and the noise trace in `model/`, and the VAE 
 
 ## Usage
 
-**Notebooks** (`notebooks/`) form the pipeline: `01` prior models → `02`/`03` VAE train/validate → `04` FWI test → `05` Run Results using scripts → `06`–`09` HMC results analysis (main, survey, waveforms, sensitivity) → `10`/`11` workflow & data. `notebooks/revision/` holds the peer-review experiments (baseline error, sparse acquisition, survey design, FWI-VAE and regularized-FWI baselines).
+Run everything from the repository root — the `scripts/` runners `cd` there automatically, and each notebook's setup cell does the same and puts `src/` on the path.
 
-**Batch runs** (`scripts/`) launch the `src/` drivers across GPUs for step `05` — for example:
+The numbered files form a single pipeline: notebooks `01`–`04` prepare the models, `scripts/05_*` run the inversions, and notebooks `06`–`11` analyze the results.
+
+| Step | Notebook / script | Purpose |
+| --- | --- | --- |
+| `01` | `notebooks/01-Prior-Models` | Build prior CO₂ saturation & velocity models |
+| `02`–`03` | `notebooks/02,03-Prior-VAE-*` | Train and validate the VAE generative prior |
+| `04` | `notebooks/04-FWI-Test` | Deterministic FWI sanity check |
+| `05` | `scripts/05_run_fwi_*.sh` | Run the FWI / HMC inversions across GPUs |
+| `06`–`09` | `notebooks/06-09-HMC-FWI-Results-*` | Analyze posterior results |
+| `10`–`11` | `notebooks/10,11-HMC-FWI-*` | Workflow schematic & data figures |
+
+`notebooks/revision/` holds the peer-review experiments (baseline error, sparse acquisition, survey design, FWI-VAE and regularized-FWI baselines).
+
+**Running step `05`.** The `scripts/05_run_fwi_*.sh` runners launch the `src/` drivers across GPUs — for example:
 
 ```bash
-bash scripts/05_run_fwi_survey.sh
+bash scripts/05_run_fwi_survey.sh    # survey/well sweep; see also *_dense, *_test, *_sensitivity
 ```
+
+> First point each script's `out_dir` — and the VAE `checkpoint_path` in `src/HMC_FWI_VAE.py` — at your own paths.
 
 > The `out_dir` in `scripts/*.sh` and `checkpoint_path` in `src/HMC_FWI_VAE.py` use absolute paths from the authors' cluster — edit them to your own (e.g. `results/`, `VAE/...pth`).
 
