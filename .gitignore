@@ -1,0 +1,76 @@
+# ---------------------------------------------------------------------------
+# OS / editor
+# ---------------------------------------------------------------------------
+.DS_Store
+.AppleDouble
+.LSOverride
+.vscode/
+.idea/
+*~
+
+# ---------------------------------------------------------------------------
+# Python
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.ipynb_checkpoints/
+.venv/
+env/
+venv/
+
+# ---------------------------------------------------------------------------
+# Large input data & model checkpoints
+# (download from Google Drive — see model/README.md and VAE/README.md)
+# ---------------------------------------------------------------------------
+/model/*
+!/model/README.md
+/VAE/*
+!/VAE/README.md
+/data/
+/checkpoints/
+
+# Heavy binary artifacts anywhere
+*.npy
+*.npz
+*.pth
+*.pt
+*.ckpt
+*.h5
+*.hdf5
+*.nc
+*.dat
+*.segy
+*.sgy
+*.mat
+*.pickle
+*.pkl
+
+# ---------------------------------------------------------------------------
+# Run outputs / logs / results
+# ---------------------------------------------------------------------------
+/runs/
+/results/
+/outputs/
+*.log
+
+# ---------------------------------------------------------------------------
+# Figures — kept local, NOT committed to the repo
+# ---------------------------------------------------------------------------
+/figures/
+/figures_revision/
+/figures_slides/
+/docs/figures/
+*.mp4
+*.avi
+
+# ---------------------------------------------------------------------------
+# Bundled seisfwi package ships a small equation-of-state table — keep it
+# (this negation overrides the *.npy rule above)
+# ---------------------------------------------------------------------------
+!seisfwi/seisfwi/**/*.npy

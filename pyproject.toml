@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bayesian-fwi-flow-prior"
+version = "1.0.0"
+description = "Bayesian full-waveform monitoring of CO2 storage with fluid-flow priors via generative modeling"
+readme = "README.md"
+requires-python = ">=3.9,<3.12"
+license = { text = "MIT" }
+authors = [
+    { name = "Haipeng Li", email = "haipeng@stanford.edu" },
+    { name = "Nanzhe Wang" },
+    { name = "Louis J. Durlofsky" },
+    { name = "Biondo L. Biondi" },
+]
+keywords = [
+    "full-waveform inversion",
+    "CO2 monitoring",
+    "uncertainty quantification",
+    "Bayesian inference",
+    "generative modeling",
+    "variational autoencoder",
+    "seismic imaging",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    # seisfwi is bundled in ./seisfwi — install it with `pip install -e ./seisfwi`
+    "deepwave",
+    "numpy>=1.25",
+    "scipy>=1.10",
+    "matplotlib>=3.7",
+    "torch>=2.0",
+    "pyro-ppl>=1.9",
+    "arviz>=0.17",
+    "netCDF4>=1.6",
+    "rockphypy",
+    "scikit-learn",
+    "scikit-image",
+    "tqdm",
+]
+
+[project.optional-dependencies]
+notebooks = ["jupyter"]
+
+[project.urls]
+Paper = "https://doi.org/10.1029/2025JH001190"
+Repository = "https://github.com/seisfwi/bayesian-fwi-flow-prior"
+
+# The scientific drivers live in src/ and are run as scripts (e.g. `python src/HMC_FWI_VAE.py`).
+# The reusable helpers are packaged as `utils` so that `pip install -e .` makes
+# `from utils import ...` importable from anywhere (notebooks, scripts, REPL).
+[tool.setuptools]
+package-dir = { "" = "src" }
+packages = ["utils"]

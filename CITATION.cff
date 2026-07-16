@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the paper below."
+title: "Bayesian Full-Waveform Monitoring of CO2 Storage With Fluid-Flow Priors via Generative Modeling"
+authors:
+  - family-names: "Li"
+    given-names: "Haipeng"
+    affiliation: "Department of Geophysics, Stanford University"
+    email: "haipeng@stanford.edu"
+  - family-names: "Wang"
+    given-names: "Nanzhe"
+  - family-names: "Durlofsky"
+    given-names: "Louis J."
+  - family-names: "Biondi"
+    given-names: "Biondo L."
+repository-code: "https://github.com/seisfwi/seisfwi"
+license: MIT
+preferred-citation:
+  type: article
+  title: "Bayesian Full-Waveform Monitoring of CO2 Storage With Fluid-Flow Priors via Generative Modeling"
+  authors:
+    - family-names: "Li"
+      given-names: "Haipeng"
+    - family-names: "Wang"
+      given-names: "Nanzhe"
+    - family-names: "Durlofsky"
+      given-names: "Louis J."
+    - family-names: "Biondi"
+      given-names: "Biondo L."
+  journal: "Journal of Geophysical Research: Machine Learning and Computation"
+  volume: 3
+  pages: "e2025JH001190"
+  year: 2026
+  doi: "10.1029/2025JH001190"

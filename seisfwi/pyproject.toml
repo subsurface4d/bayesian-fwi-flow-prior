@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "seisfwi"
+version = "0.0.1"
+description = "Full-waveform inversion for high-resolution subsurface imaging — lightweight build with only the modules used by the Bayesian CO2-monitoring workflow."
+readme = "README.md"
+requires-python = ">=3.9,<3.12"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Haipeng Li", email = "haipeng@stanford.edu" }]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "numpy>=1.25",
+    "scipy>=1.10",
+    "matplotlib>=3.7",
+    "pandas",
+    "torch>=2.0",
+    "deepwave",
+    "pyro-ppl>=1.9",
+    "arviz>=0.17",
+    "netCDF4>=1.6",
+    "tqdm",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["seisfwi*"]
+
+[tool.setuptools.package-data]
+"seisfwi.model" = ["*.npy"]

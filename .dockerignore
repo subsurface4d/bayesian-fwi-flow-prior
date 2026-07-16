@@ -1,0 +1,35 @@
+# Keep the Docker build context small and free of large/regenerable files.
+
+# Version control
+.git
+.gitignore
+
+# Large inputs & model checkpoints (mount at runtime instead)
+model/
+VAE/
+data/
+checkpoints/
+
+# Run outputs
+runs/
+results/
+outputs/
+*.log
+
+
+# Heavy binaries
+*.pth
+*.pt
+*.ckpt
+*.npy
+*.npz
+*.dat
+*.mp4
+*.avi
+
+# Python / OS caches
+**/__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.DS_Store
+.venv/
